@@ -1,0 +1,90 @@
+---
+title: "Proposal"
+author: Ruosong Zhou; Rachel Yee Rui Min; Freddie Tan Jr.
+---
+
+## **Overview** 
+
+Climate change has been a top priority issue in recent decades. Each year, climate change's impact has become more evident through rising sea levels, fluctuating temperatures, unpredictability of weather, and countless other effects that climate change has had on life. 
+
+As a part of addressing climate change, learning how to adapt society to the impact that it has created has become a priority for many governments in the world. For Singapore, a part of this effort is through Meteorological Service Singapore which collects and maintains national weather records.
+
+## **Objectives**
+
+Using the data collected by Meteorological Service Singapore, the team aims to do the following: 
+
+1.  Reveal patterns and anomalies with past weather data.
+
+2.  Identify correlations between different effects of climate change.
+
+3.  Visualize the different effects of climate change to the different regions of Singapore. 
+
+4.  Provide suggestions to addressing the impact of climate change to Singapore.
+
+## **Proposed Methodology**
+
+From the historical weather data gathered, the team is interested in looking deeper into the key meteorological variables.
+
+### Targeted Analysis:
+
+-   Rainfall: Average rainfall for each region within Singapore per year & Precipitation patterns 
+-   Temperature: Average temperature of each region within Singapore per year & Temperature variations 
+-   Water Level: The annual sea level changes 
+-   Humidity: Humidity patterns, and moisture levels 
+-   Wind Patterns:  Direction and intensity of winds 
+
+### Concept of Visualizing Time-series Data 
+
+-     Utilize various visualization techniques tailored to time-series data. 
+
+**Correlation** 
+
+-   Implement correlation analyses to identify relationships between related factors. 
+
+**Animation** 
+
+-   Visualizations illustrating changes of the weather from 1980 to the present. 
+
+**Interactive tooltip** 
+
+-   Provide information related to specific data points and the factors correlated with them. 
+
+**Tree map (Heat map)** 
+
+-   Categorize information by region for spatial exploration. 
+
+**Ternary Plot** 
+
+-   Representation of the composition of objects expressed by a variability of components. 
+
+## **Shiny App** 
+
+The proposed Shiny App for historical weather data aims to provide an interactive visualization platform with different tabs, each focusing on key aspects of the data: 
+
+**Rainfall and Temperature Analysis** 
+
+-   Visualizing average rainfall and temperature for each region within Singapore per year. 
+
+-   Time-series plots to show trends and patterns. 
+
+-   Correlation matrices to identify relationships between rainfall and temperature. 
+
+**Water Level Dynamics** 
+
+-   Exploring sea level changes per year through interactive line charts. 
+
+-   Animation features illustrate changes over the years. 
+
+-   Correlation matrices to identify relationships between water levels and other factors. 
+
+**Integrated Tree Map** 
+
+-   A tree map (or heat map) displaying information by region. 
+
+-   Users can interact with the map to explore variation in data across different areas. 
+
+**Time-Series Animation** 
+
+-   A combination of all factors analyzed and animated to showcase changes in meteorological factors from 1980 to present. 
+
+-   Users can dynamically observe how different variables evolve over time. 

@@ -2,4 +2,14 @@
 title: "ISSS608-G1-Group10-Project"
 ---
 
-This is our home page.
+### What's This Website For
+
+Using the data collected by Meteorological Service Singapore, the website aims to provide information about the following: 
+
+1.  Reveal patterns and anomalies with past weather data.
+
+2.  Identify correlations between different effects of climate change.
+
+3.  Visualize the different effects of climate change to the different regions of Singapore. 
+
+4.  Provide suggestions to addressing the impact of climate change to Singapore.

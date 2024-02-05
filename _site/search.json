@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "ISSS608-G1-Group10-Project",
     "section": "",
-    "text": "This is our home page."
+    "text": "Using the data collected by Meteorological Service Singapore, the website aims to provide information about the following: \n\nReveal patterns and anomalies with past weather data.\nIdentify correlations between different effects of climate change.\nVisualize the different effects of climate change to the different regions of Singapore. \nProvide suggestions to addressing the impact of climate change to Singapore."
   },
   {
     "objectID": "about.html",
@@ -12,5 +12,61 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "Proposal/Proposal.html",
+    "href": "Proposal/Proposal.html",
+    "title": "Proposal",
+    "section": "",
+    "text": "Climate change has been a top priority issue in recent decades. Each year, climate change’s impact has become more evident through rising sea levels, fluctuating temperatures, unpredictability of weather, and countless other effects that climate change has had on life. \nAs a part of addressing climate change, learning how to adapt society to the impact that it has created has become a priority for many governments in the world. For Singapore, a part of this effort is through Meteorological Service Singapore which collects and maintains national weather records."
+  },
+  {
+    "objectID": "Proposal/Proposal.html#targeted-analysis",
+    "href": "Proposal/Proposal.html#targeted-analysis",
+    "title": "Proposal",
+    "section": "Targeted Analysis: ",
+    "text": "Targeted Analysis: \n\nRainfall: Average rainfall for each region within Singapore per year & Precipitation patterns \nTemperature: Average temperature of each region within Singapore per year & Temperature variations \nWater Level: The annual sea level changes \nHumidity: Humidity patterns, and moisture levels \nWind Patterns:  Direction and intensity of winds"
+  },
+  {
+    "objectID": "Proposal/Proposal.html#concept-of-visualizing-time-series-data",
+    "href": "Proposal/Proposal.html#concept-of-visualizing-time-series-data",
+    "title": "Proposal",
+    "section": "Concept of Visualizing Time-series Data ",
+    "text": "Concept of Visualizing Time-series Data \n\n  Utilize various visualization techniques tailored to time-series data. \n\nCorrelation \n\nImplement correlation analyses to identify relationships between related factors. \n\nAnimation \n\nVisualizations illustrating changes of the weather from 1980 to the present. \n\nInteractive tooltip \n\nProvide information related to specific data points and the factors correlated with them. \n\nTree map (Heat map) \n\nCategorize information by region for spatial exploration. \n\nTernary Plot \n\nRepresentation of the composition of objects expressed by a variability of components."
+  },
+  {
+    "objectID": "Proposal/Proposal.html#overview",
+    "href": "Proposal/Proposal.html#overview",
+    "title": "Proposal",
+    "section": "",
+    "text": "Climate change has been a top priority issue in recent decades. Each year, climate change’s impact has become more evident through rising sea levels, fluctuating temperatures, unpredictability of weather, and countless other effects that climate change has had on life. \nAs a part of addressing climate change, learning how to adapt society to the impact that it has created has become a priority for many governments in the world. For Singapore, a part of this effort is through Meteorological Service Singapore which collects and maintains national weather records."
+  },
+  {
+    "objectID": "Proposal/Proposal.html#objectives",
+    "href": "Proposal/Proposal.html#objectives",
+    "title": "Proposal",
+    "section": "Objectives",
+    "text": "Objectives\nUsing the data collected by Meteorological Service Singapore, the team aims to do the following: \n\nReveal patterns and anomalies with past weather data.\nIdentify correlations between different effects of climate change.\nVisualize the different effects of climate change to the different regions of Singapore. \nProvide suggestions to addressing the impact of climate change to Singapore."
+  },
+  {
+    "objectID": "Proposal/Proposal.html#proposed-methodology",
+    "href": "Proposal/Proposal.html#proposed-methodology",
+    "title": "Proposal",
+    "section": "Proposed Methodology",
+    "text": "Proposed Methodology\nFrom the historical weather data gathered, the team is interested in looking deeper into the key meteorological variables.\n\nTargeted Analysis:\n\nRainfall: Average rainfall for each region within Singapore per year & Precipitation patterns \nTemperature: Average temperature of each region within Singapore per year & Temperature variations \nWater Level: The annual sea level changes \nHumidity: Humidity patterns, and moisture levels \nWind Patterns:  Direction and intensity of winds \n\n\n\nConcept of Visualizing Time-series Data \n\n  Utilize various visualization techniques tailored to time-series data. \n\nCorrelation \n\nImplement correlation analyses to identify relationships between related factors. \n\nAnimation \n\nVisualizations illustrating changes of the weather from 1980 to the present. \n\nInteractive tooltip \n\nProvide information related to specific data points and the factors correlated with them. \n\nTree map (Heat map) \n\nCategorize information by region for spatial exploration. \n\nTernary Plot \n\nRepresentation of the composition of objects expressed by a variability of components."
+  },
+  {
+    "objectID": "Proposal/Proposal.html#shiny-app",
+    "href": "Proposal/Proposal.html#shiny-app",
+    "title": "Proposal",
+    "section": "Shiny App ",
+    "text": "Shiny App \nThe proposed Shiny App for historical weather data aims to provide an interactive visualization platform with different tabs, each focusing on key aspects of the data: \nRainfall and Temperature Analysis \n\nVisualizing average rainfall and temperature for each region within Singapore per year. \nTime-series plots to show trends and patterns. \nCorrelation matrices to identify relationships between rainfall and temperature. \n\nWater Level Dynamics \n\nExploring sea level changes per year through interactive line charts. \nAnimation features illustrate changes over the years. \nCorrelation matrices to identify relationships between water levels and other factors. \n\nIntegrated Tree Map \n\nA tree map (or heat map) displaying information by region. \nUsers can interact with the map to explore variation in data across different areas. \n\nTime-Series Animation \n\nA combination of all factors analyzed and animated to showcase changes in meteorological factors from 1980 to present. \nUsers can dynamically observe how different variables evolve over time."
+  },
+  {
+    "objectID": "index.html#whats-this-website-for",
+    "href": "index.html#whats-this-website-for",
+    "title": "ISSS608-G1-Group10-Project",
+    "section": "",
+    "text": "Using the data collected by Meteorological Service Singapore, the website aims to provide information about the following: \n\nReveal patterns and anomalies with past weather data.\nIdentify correlations between different effects of climate change.\nVisualize the different effects of climate change to the different regions of Singapore. \nProvide suggestions to addressing the impact of climate change to Singapore."
   }
 ]
