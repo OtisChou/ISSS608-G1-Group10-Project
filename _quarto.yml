@@ -18,7 +18,12 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      - minty
+      - theme.scss
+    highlight-style: kate
+    code-copy: hover
+    code-overflow: wrap
     css: styles.css
     toc: true
 
