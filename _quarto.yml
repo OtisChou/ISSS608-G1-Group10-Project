@@ -11,7 +11,7 @@ website:
     
     - text: "Acutal Work"
       menu:
-        - text: "DataPrep"
+        - text: "DataPrepration"
           href: "Actualwork/Dataprep/Dataprep.html"
     
 

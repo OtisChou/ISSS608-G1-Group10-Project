@@ -1,38 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "ISSS608-G1-Group10-Project",
-    "section": "",
-    "text": "What’s This Website For\nUsing the data collected by Meteorological Service Singapore, the website aims to provide information about the following: \n\nReveal patterns and anomalies with past weather data.\nIdentify correlations between different effects of climate change.\nVisualize the different effects of climate change to the different regions of Singapore. \nProvide suggestions to addressing the impact of climate change to Singapore."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
     "objectID": "Proposal/Proposal.html",
     "href": "Proposal/Proposal.html",
     "title": "Proposal",
     "section": "",
     "text": "Climate change has been a top priority issue in recent decades. Each year, climate change’s impact has become more evident through rising sea levels, fluctuating temperatures, unpredictability of weather, and countless other effects that climate change has had on life. \nAs a part of addressing climate change, learning how to adapt society to the impact that it has created has become a priority for many governments in the world. For Singapore, a part of this effort is through Meteorological Service Singapore which collects and maintains national weather records."
-  },
-  {
-    "objectID": "Proposal/Proposal.html#targeted-analysis",
-    "href": "Proposal/Proposal.html#targeted-analysis",
-    "title": "Proposal",
-    "section": "Targeted Analysis: ",
-    "text": "Targeted Analysis: \n\nRainfall: Average rainfall for each region within Singapore per year & Precipitation patterns \nTemperature: Average temperature of each region within Singapore per year & Temperature variations \nWater Level: The annual sea level changes \nHumidity: Humidity patterns, and moisture levels \nWind Patterns:  Direction and intensity of winds"
-  },
-  {
-    "objectID": "Proposal/Proposal.html#concept-of-visualizing-time-series-data",
-    "href": "Proposal/Proposal.html#concept-of-visualizing-time-series-data",
-    "title": "Proposal",
-    "section": "Concept of Visualizing Time-series Data ",
-    "text": "Concept of Visualizing Time-series Data \n\n  Utilize various visualization techniques tailored to time-series data. \n\nCorrelation \n\nImplement correlation analyses to identify relationships between related factors. \n\nAnimation \n\nVisualizations illustrating changes of the weather from 1980 to the present. \n\nInteractive tooltip \n\nProvide information related to specific data points and the factors correlated with them. \n\nTree map (Heat map) \n\nCategorize information by region for spatial exploration. \n\nTernary Plot \n\nRepresentation of the composition of objects expressed by a variability of components."
   },
   {
     "objectID": "Proposal/Proposal.html#overview",
@@ -63,13 +35,6 @@
     "text": "Shiny App \nThe proposed Shiny App for historical weather data aims to provide an interactive visualization platform with different tabs, each focusing on key aspects of the data: \nRainfall and Temperature Analysis \n\nVisualizing average rainfall and temperature for each region within Singapore per year. \nTime-series plots to show trends and patterns. \nCorrelation matrices to identify relationships between rainfall and temperature. \n\nWater Level Dynamics \n\nExploring sea level changes per year through interactive line charts. \nAnimation features illustrate changes over the years. \nCorrelation matrices to identify relationships between water levels and other factors. \n\nIntegrated Tree Map \n\nA tree map (or heat map) displaying information by region. \nUsers can interact with the map to explore variation in data across different areas. \n\nTime-Series Animation \n\nA combination of all factors analyzed and animated to showcase changes in meteorological factors from 1980 to present. \nUsers can dynamically observe how different variables evolve over time."
   },
   {
-    "objectID": "index.html#whats-this-website-for",
-    "href": "index.html#whats-this-website-for",
-    "title": "ISSS608-G1-Group10-Project",
-    "section": "",
-    "text": "Using the data collected by Meteorological Service Singapore, the website aims to provide information about the following: \n\nReveal patterns and anomalies with past weather data.\nIdentify correlations between different effects of climate change.\nVisualize the different effects of climate change to the different regions of Singapore. \nProvide suggestions to addressing the impact of climate change to Singapore."
-  },
-  {
     "objectID": "Actualwork/Dataprep/Dataprep.html",
     "href": "Actualwork/Dataprep/Dataprep.html",
     "title": "Data Prepration",
@@ -96,5 +61,19 @@
     "title": "Data Prepration",
     "section": "2.3 Read Output Data",
     "text": "2.3 Read Output Data\nIn this phase, we put our consolidated data set into the R programming environment, ensuring a seamless integration for comprehensive evaluation.\n\nweatherdata &lt;- read_rds(\"data/weatherdata.rds\")\nsummary(weatherdata)\n\n   Station              Year              Month               Day           \n Length:19629       Length:19629       Length:19629       Length:19629      \n Class :character   Class :character   Class :character   Class :character  \n Mode  :character   Mode  :character   Mode  :character   Mode  :character  \n                                                                            \n                                                                            \n                                                                            \n                                                                            \n    Rainfall          MeanTemp        MaxTemp         MinTemp     \n Min.   :  0.000   Min.   :22.20   Min.   :22.80   Min.   :20.00  \n 1st Qu.:  0.000   1st Qu.:26.90   1st Qu.:30.90   1st Qu.:24.10  \n Median :  0.200   Median :27.70   Median :32.00   Median :25.00  \n Mean   :  6.327   Mean   :27.66   Mean   :31.75   Mean   :25.01  \n 3rd Qu.:  6.000   3rd Qu.:28.50   3rd Qu.:32.90   3rd Qu.:25.90  \n Max.   :210.600   Max.   :30.80   Max.   :36.80   Max.   :29.00  \n NA's   :460       NA's   :649     NA's   :587     NA's   :587    \n    MeanWind         MaxWind      \n Min.   : 0.400   Min.   :  8.30  \n 1st Qu.: 5.800   1st Qu.: 27.00  \n Median : 7.200   Median : 31.70  \n Mean   : 7.984   Mean   : 32.77  \n 3rd Qu.: 9.400   3rd Qu.: 37.40  \n Max.   :31.300   Max.   :105.50  \n NA's   :800      NA's   :796"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ISSS608-G1-Group10-Project",
+    "section": "",
+    "text": "What’s This Website For\nUsing the data collected by Meteorological Service Singapore, the website aims to provide information about the following: \n\nReveal patterns and anomalies with past weather data.\nIdentify correlations between different effects of climate change.\nVisualize the different effects of climate change to the different regions of Singapore. \nProvide suggestions to addressing the impact of climate change to Singapore."
   }
 ]
