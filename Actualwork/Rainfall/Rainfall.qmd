@@ -1,0 +1,295 @@
+---
+title: "Rainfall Analytic Modules for Visual Analytics Shiny Application"
+execute:
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+  message: false
+---
+
+# Overview
+
+With the rising concerns regarding climate change, various factors such as rising temperatures, rainfall, and wind speeds have been put into question regarding climate change's effects on these natural phenomenon. With this, the team aims to observe the weather patterns from the past 11 years in various stations within Singapore to determine if there is a notable change to these factors over the past years.
+
+For the purposes of this exercise, the data regarding rainfall will be analyzed for this task as the factors of temperature and wind speed are to be analyzed by other team members.
+
+# Data Preparation
+
+## Installing Packages
+
+For this task, the following packages have been loaded in order to accomplish necessary tasks.
+
+```{r}
+pacman::p_load(tidyverse, ggplot2, ggthemes, ggpubr, forecast, ggiraph, girafe, plotly, dplyr)
+```
+
+## Loading the Data
+
+The file weatherdata.rds is also loaded. The file contains the daily readings collected by the [Meteorological Service Singapore](http://www.weather.gov.sg/home/). Specifically from 5 of their stations (Admiralty, Changi, Jurong West, Newton, and Pulau Ubin) which have collected data since 2013.
+
+```{r}
+weatherdata <- read_rds("data/weatherdata.rds")
+```
+
+A summary of the data can be seen through the code below.
+
+```{r}
+summary(weatherdata)
+```
+
+# Exploratory Data Analysis
+
+## Correlation
+
+Using the data, a correlation plot can be created to see if rainfall has any correlations with the temperature or wind speed.
+
+::: panel-tabset
+## Temperature
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show code"
+correlation <- cor(weatherdata$Rainfall, weatherdata$MeanTemp, use = "complete.obs")
+
+gg <- ggplot(data = weatherdata,
+       aes(x=Rainfall, y=MeanTemp))+
+  geom_point()+
+  geom_smooth(method=lm,
+              size=0.5)+
+  ggtitle("Mean Temperature by Rainfall") +
+  theme_hc() +
+  coord_cartesian(ylim = c(20, 32)) +
+  scale_y_continuous(breaks = seq(20, 32, by = 2))
+
+gg <- gg + annotate("text", x = Inf, y = Inf, 
+                    label = paste("Correlation:", round(correlation, 4)), 
+                    hjust = 1, vjust = 1, size = 5)
+
+print(gg)
+```
+
+## Wind Speed
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show code"
+correlation <- cor(weatherdata$Rainfall, weatherdata$MeanWind, use = "complete.obs")
+
+gg <- ggplot(data = weatherdata,
+       aes(x=Rainfall, y=MeanWind))+
+  geom_point()+
+  geom_smooth(method=lm,
+              size=0.5)+
+  ggtitle("Mean Wind Speed by Rainfall") +
+  theme_hc() +
+  coord_cartesian(ylim = c(0, 32)) +
+  scale_y_continuous(breaks = seq(0, 32, by = 2))
+
+gg <- gg + annotate("text", x = Inf, y = Inf, 
+                    label = paste("Correlation:", round(correlation, 4)), 
+                    hjust = 1, vjust = 1, size = 5)
+
+print(gg)
+```
+:::
+
+As observed, there is a moderate association between the amount of rainfall and the temperature observed for the day. There is a pattern that shows that the more rainfall occurs, the lower the temperature appears to be.
+
+Meanwhile for wind speed, there does not appear to be any association between the wind speed and the observed amount of rainfall.
+
+## Rainfall
+
+### Monthly Rainfall
+
+The monthly rainfall per year can be observed and plotted as a heat map.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show code"
+heatmap_data <- weatherdata %>%
+  group_by(Year, Month, Station) %>%
+  summarize(avg_rainfall = mean(Rainfall, na.rm = TRUE),
+            max_rainfall = max(Rainfall, na.rm = TRUE))
+
+heatmap_data$Month <- factor(heatmap_data$Month, levels = 1:12, labels = month.name)
+
+heatmap_plot <- plot_ly(heatmap_data, 
+                        x = ~Month, 
+                        y = ~Year, 
+                        z = ~avg_rainfall, 
+                        type = "heatmap", 
+                        colorscale = list(c(0, "rgb(255,255,255)"),
+                                          c(1, "rgb(0,0,128)")), 
+                        text = ~paste("Average Rainfall: ", round(avg_rainfall, 2), "<br>Most Rainfall Observed: ", max_rainfall),
+                        hoverinfo = "text") %>%
+  layout(title = "Average Daily Rainfall per Month per Year",
+         xaxis = list(title = "Month"),
+         yaxis = list(title = "Year"),
+         hovermode = "closest")
+
+heatmap_plot
+```
+
+The heat map shows that the later parts of the year tend to experience heavier rainfall while the 2nd quarter of the year tends to have lighter rainfall.
+
+### Rainfall per Station
+
+The stations can be compared to one another to see if there are significant differences between the station. Due to the data having large amounts of outlines, the resulting graph appears quite compressed. A zoomed in version of the graph can be created to gain a better understanding of the differences.
+
+::: panel-tabset
+#### Full Graph
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show code"
+p1 <- ggplot(data = weatherdata,
+       aes(y=Rainfall,x=Station))+
+  geom_boxplot()+
+  theme_hc()
+p1 %>%
+  ggplotly()%>%
+  layout(boxmode = "group")
+```
+
+#### Zoom In
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show code"
+p1 <- ggplot(data = weatherdata,
+             aes(y = Rainfall, x = Station)) +
+  geom_boxplot()+
+  theme_hc()+
+  scale_y_continuous(breaks = seq(0, 20, by = 2))
+
+p1 <- ggplotly(p1) %>%
+  layout(boxmode = "group", yaxis = list(range = c(0, 21)))
+
+p1
+```
+:::
+
+The values are quite similar to one another, further tests on the data can be done to check if there are significant differences per station.
+
+# Confirmatory Data Analysis
+
+## Tukey Test Between Stations
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show code"
+anova_result <- aov(Rainfall ~ Station, data = weatherdata)
+
+tukey_result <- TukeyHSD(anova_result)
+
+print(tukey_result)
+```
+
+The results of the Tukey test show that there are significant differences between a good number of the stations. Unfortunately, not all of the comparisons have a strong enough p value to definitively state it. However, in terms of the ranking, it would appear that Jurong (West) receives the highest amount of rain, followed by Pulau Ubin, Changi, Admiralty, and finally Newton.
+
+## Tukey Test Between Months
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show code"
+anova_result <- aov(Rainfall ~ Month, data = weatherdata)
+
+tukey_result <- TukeyHSD(anova_result)
+
+print(tukey_result)
+```
+
+For this Tukey test, the results are more difficult to determine as many p value results state that there is a low degree of certainty in terms of ranking the months in terms of which ones receive the most rainfall.
+
+## Tukey Test Between Years
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show code"
+anova_result <- aov(Rainfall ~ Year, data = weatherdata)
+
+tukey_result <- TukeyHSD(anova_result)
+
+print(tukey_result)
+```
+
+Based off of the results of this test, not all years have a high degree of certainty of receiving more rain than others. Breaking the results down, the following can be seen.
+
+-   **2013**: No statistically significant differences found.
+
+-   **2014**: Received significantly less rainfall compared to 2015, 2019, 2021, 2022, and 2023.
+
+-   **2015**: Received significantly more rainfall than 2013, 2014, 2016, 2017, and 2018.
+
+-   **2016**: Received significantly less rainfall compared to 2015, 2019, 2021, 2022, and 2023.
+
+-   **2017**: No statistically significant differences found.
+
+-   **2018**: Received significantly less rainfall compared to 2015, 2019, 2021, 2022, and 2023.
+
+-   **2019**: Received significantly more rainfall than 2013, 2014, 2015, 2016, and 2018.
+
+-   **2020**: No statistically significant differences found.
+
+-   **2021**: Received significantly more rainfall than 2013, 2014, 2015, 2016, and 2018.
+
+-   **2022**: Received significantly more rainfall than 2013, 2014, 2015, 2016, and 2018.
+
+-   **2023**: Received significantly more rainfall than 2013, 2014, 2015, 2016, and 2018.
+
+# Predictive Modeling
+
+## Additional Data Wrangling
+
+For the model, the year, month, and day columns of the data set must be converted into a proper date format.
+
+```{r}
+weatherdata$Date <- as.Date(paste(weatherdata$Year, weatherdata$Month, weatherdata$Day, sep = "-"))
+```
+
+The average rain per month must then be obtained to better see a monthly pattern for the data.
+
+```{r}
+AvgRainPerMonth <- weatherdata %>%
+  group_by(Year, Month) %>%
+  summarise(AvgRainfall = mean(Rainfall, na.rm = TRUE))
+```
+
+The data set for predictive modeling can then be created using the code below.
+
+```{r}
+AvgRainPerMonth$Month <- factor(AvgRainPerMonth$Month, levels = 1:12,
+                                labels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                                           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"))
+
+ts_data <- ts(AvgRainPerMonth$AvgRainfall, start = c(2013, 1), frequency = 12)
+```
+
+## Creating the Model
+
+The code chunk below creates the predictive model
+
+```{r}
+arima_model <- auto.arima(ts_data)
+```
+
+The code chunk below creates the model's predictions for the next 3 years (36 months)
+
+```{r}
+forecast_result <- forecast(arima_model, h = 36)  # 3 years = 36 months
+
+print(forecast_result)
+```
+
+Finally, the model's prediction can be plotted.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show code"
+plot(forecast_result)
+```
+
+This is the predicted trend for the rainfall in Singapore. The model has a large deviation due to the inconsistent weather patterns that have been observed the past few years. In truth, this is very well in line with the concerns regarding climate change as a part of the results is that weather patterns become more erratic and unpredictable.
+
+# 

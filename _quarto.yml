@@ -9,12 +9,19 @@ website:
       href: "Proposal/Proposal.html"
     
     
-    - text: "Acutal Work"
+    - text: "Analysis"
       menu:
         - text: "DataPrepration"
           href: "Actualwork/Dataprep/Dataprep.html"
+        - text: "Temperature Analysis"
+          href: "Actualwork/Temperature/Temperature.html"
+        - text: "Rainfall Analysis"
+          href: "Actualwork/Rainfall/Rainfall.html"
+        - text: "Wind Analysis"
+          href: "Actualwork/Wind/Wind.html"
     
-
+    - text: "R shiny App"
+      href: "Rshiny/Rshiny.html"
     
  
     right:
