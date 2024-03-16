@@ -7,9 +7,9 @@ execute:
 
 # Temperature
 
-## 1.Introduction
+![](images/Weather-01.jpg)
 
-![](images/Weather.jpg)
+## 1.Introduction
 
 In this section, we will delve into the historical temperature data of Singapore, aiming to gain a thorough insight through the creation of various interactive tools. Additionally, we will employ statistical tests and visualization techniques to substantiate the claim depicted in the charts—that there has been a temperature increase of 0.25 degrees per decade.
 
@@ -190,10 +190,13 @@ summary(model)
 ```
 
 ```{r}
-ggplot(annual_avg_temp, aes(x = as.numeric(Year), y = AnnualAverageMeanTemp)) +
-  geom_point() +
-  geom_smooth(method = "lm", color = "blue") +
+
+ggplot(annual_avg_temp, aes(x = as.numeric(factor(Year)), y = AnnualAverageMeanTemp)) +
+  geom_point(aes(group = 1)) + 
+  geom_smooth(method = "loess", color = "blue", aes(group = 1)) +
+  scale_x_continuous(breaks = as.numeric(factor(unique(annual_avg_temp$Year))), labels = unique(annual_avg_temp$Year)) + # Adjust the x-axis labels to show years as characters
   labs(title = "Long-term Temperature Trend", x = "Year", y = "Average Temperature")
+
 ```
 
 Based on this analysis, there doesn't appear to be a significant trend in the annual average mean temperature over the years in your data set. The changes in temperature from year to year are not statistically significant, suggesting that the temperature has remained relatively stable over the period under consideration, at least within the sensitivity of this model.

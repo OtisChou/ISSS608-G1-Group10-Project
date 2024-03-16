@@ -6,7 +6,7 @@ The R shiny app of our analysis will provided by the link below.
 
 ## Design Idea
 
-![](images/R shiny design 3.png)
+![](images/R%20shiny%20design%203.png)
 
 The proposed dashboard for Singapore's weather analysis will include 3 main sections:
 
