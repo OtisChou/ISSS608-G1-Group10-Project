@@ -26,6 +26,9 @@ website:
         href: "Rshiny/UserGuide/Rshiny.html"
       - text: "ShinyApp"
         href: "Rshiny/ShinyApp/shinyApp.html"
+   
+    - text: "Poster"
+      href: "Poster/Poster.html"
  
     right:
       - href: index.qmd
