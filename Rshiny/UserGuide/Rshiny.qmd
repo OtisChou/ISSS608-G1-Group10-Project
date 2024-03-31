@@ -1,0 +1,63 @@
+---
+title: "R Shiny App User Guide"
+---
+
+## **Using the App**
+
+1.  **Select the Analysis Tab:** Begin by selecting one of the four main tabs based on your analysis interest.
+
+2.  **Configure Parameters:** Use the sidebar options to tailor the analysis. Choices include data categories, regions, and specific time frames.
+
+3.  **View Results:** The main panel will automatically update to show the results based on your selections. For predictive analysis, click the "Update" button to generate forecasts.
+
+4.  **Interact with Visualizations:** Explore the visualizations. Plotly charts in the app are interactive, allowing for closer examination of specific data points.
+
+### **Exploratory Data Analysis**
+
+This section allows users to visualize weather data trends and distributions for selected categories (Temperature, Rainfall, Wind), regions, and year ranges.
+
+-   **Select a Category:** Choose the weather data category you're interested in.
+
+-   **Select Region(s):** Choose one or more regions to analyze.
+
+-   **Select a Range of Years:** Use the slider to select the range of years for analysis.
+
+-   **Visualizations:** View generated plots for the selected data.
+
+### **Exploratory Data Analysis 2**
+
+The "Exploratory Data Analysis 2" tab extends the functionality of the initial EDA tab by offering advanced visualization tools, including heat maps and trend lines, to analyze weather data across different categories, locations, and individual years.
+
+-   **Choose a Data Category:** Begin by selecting the type of weather data you wish to explore (e.g., Temperature, Rainfall, Wind).
+
+-   **Select a Location:** Choose a specific location for your analysis or opt to analyze data from all locations.
+
+-   **Choose Years:** Select one or more years from the list. This flexible selection allows for detailed year-by-year comparisons.
+
+-   **View the Visualizations:** After configuring your selections, the app will display the corresponding visualizations in the main panel. Heat maps show how your selected category's values vary by month and year, while trend lines illustrate changes over the months for the chosen years
+
+### **Confirmatory Data Analysis (CDA)**
+
+In this section, users can perform deeper analysis to confirm hypotheses or trends identified during EDA. It includes options for selecting categories, locations, and year ranges similar to the EDA sections but focuses on long-term trends and annual comparisons.
+
+-   **Select Category:** Choose one of the weather data categories (Temperature, Rainfall, Wind) for in-depth analysis.
+
+-   **Select Location:** Users can specify a location to analyze or select "All locations" to aggregate data across all available regions.
+
+-   **Select a Range of Years:** This feature allows users to define a range of years for their analysis, enabling the examination of trends over time.
+
+-   **Visualization Tools:** The CDA section provides plots that visualize long-term trends and annual variations in the selected weather data category. These include line graphs showing trends over time and box plots for annual data variability.
+
+### **Predictive Analysis**
+
+The Predictive Analysis tab offers tools for forecasting future weather conditions based on historical data. Users can select a category, location(s), and a target year range for the forecast. An "Update" button triggers the forecasting process, displaying the predicted values along with confidence intervals.
+
+-   **Select Category:** Choose the weather category (Temperature, Rainfall, Wind) for which you want to make predictions.
+
+-   **Select Location(s):** You can select one or multiple locations for which the forecast should be generated.
+
+-   **Select a Year:** Choose the target year for the forecast. This selection determines the time frame for the predictive analysis.
+
+-   **Update Button:** After configuring your selections, click the "Update" button to generate the forecast.
+
+-   **Forecast Visualization:** The app displays a plot showing the forecasted values along with confidence intervals, providing a visual representation of predicted future trends.

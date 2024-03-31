@@ -53,7 +53,7 @@ annual_avg_temp <- weatherdata %>%
 
 monthly_avg_temp <- weatherdata %>%
   group_by(Year,Month) %>%
-  summarise(AnnualAverageMeanTemp = mean(MeanTemp, na.rm = TRUE))
+  summarise(MeanTemp = mean(MeanTemp, na.rm = TRUE))
 monthly_avg_temp$Month <- factor(monthly_avg_temp$Month,
                                   levels = 1:12,
                                   labels = 
@@ -94,7 +94,7 @@ Observation: The Rain cloud Plot indicates a marginally elevated mean temperatur
 ```{r}
 monthly_avg_temp_bystation <- weatherdata %>%
   group_by(Year,Month,Station) %>%
-  summarise(AnnualAverageMeanTemp = mean(MeanTemp, na.rm = TRUE))
+  summarise(MeanTemp = mean(MeanTemp, na.rm = TRUE))
 monthly_avg_temp_bystation$Month <- factor(monthly_avg_temp_bystation$Month,
                                   levels = 1:12,
                                   labels = 
@@ -103,15 +103,15 @@ monthly_avg_temp_bystation$Month <- factor(monthly_avg_temp_bystation$Month,
 
 gg <- ggplot(monthly_avg_temp_bystation , 
        aes(x = Month, 
-           y = AnnualAverageMeanTemp,
-           size = AnnualAverageMeanTemp,
+           y = MeanTemp,
+           size = MeanTemp,
            color = as.factor(Station)
            )) +
   geom_point(aes(size = 0.1 ,frame=Year),
              alpha = 0.7) +
   scale_size(range = c(2, 12)) +
   labs(x = 'Month', 
-       y = 'Daily Mean Temp') + 
+       y = 'Mean Temp') + 
   theme(legend.position='bottom') +
   guides(color = guide_legend(title = "Year", 
                              override.aes = list(size = 3),
@@ -178,24 +178,17 @@ Observation: Upon analyzing the maximum, minimum, and average temperatures over 
 ### 4.5 HeatMap: Mean Temperature by Year and Month
 
 ```{r}
-gg->ggplot(monthly_avg_temp, 
-       aes(Year, 
-           Month, 
-           fill = AnnualAverageMeanTemp)) + 
-  geom_tile(color = "white", 
-          size = 0.1) + 
-  theme_tufte(base_family = "Helvetica") + 
-  coord_equal() +
-  scale_fill_gradient(name = "# of attacks",
-                    low = "sky blue", 
-                    high = "dark blue") +
-  labs(x = NULL, y = NULL, 
-     title = "Heat Map of Temeperature by Year& Month") +
+gg <- ggplot(monthly_avg_temp, aes(x = Year, y = Month, fill = MeanTemp)) +
+  geom_tile(color = "white", size = 0.1) +
+  theme_tufte(base_family = "Helvetica") +
+  scale_fill_gradient(name = "Annual Avg Temp",
+                      low = "sky blue", high = "dark blue") +
+  labs(title = "Heat Map of Temperature by Year & Month") +
   theme(axis.ticks = element_blank(),
         axis.text.x = element_text(size = 7),
         plot.title = element_text(hjust = 0.5),
         legend.title = element_text(size = 8),
-        legend.text = element_text(size = 6) )
+        legend.text = element_text(size = 6))
 
 ggplotly(gg)
 ```
@@ -205,7 +198,7 @@ Observation: Analyzing the heat map, there's no definitive indication of a risin
 ### 4.6 Monthly Average Temperature Trends by Year
 
 ```{r}
-ggplot(monthly_avg_temp, aes(x = factor(Month), y = AnnualAverageMeanTemp, group = Year, color = factor(Year))) +
+ggplot(monthly_avg_temp, aes(x = factor(Month), y = MeanTemp, group = Year, color = factor(Year))) +
   geom_line() +
   geom_point() +
   theme_minimal() +

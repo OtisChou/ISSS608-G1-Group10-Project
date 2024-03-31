@@ -1,0 +1,6 @@
+---
+title: "Shiny App"
+---
+```{=html}
+<iframe src="https://ftj72.shinyapps.io/Singapore_Weather_Statistics/" width="100%" height="600" style="border: none;"></iframe>
+```

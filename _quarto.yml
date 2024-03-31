@@ -21,8 +21,11 @@ website:
           href: "Actualwork/Wind/Wind.html"
     
     - text: "R shiny App"
-      href: "Rshiny/Rshiny.html"
-    
+      menu:
+      - text: "UserGuide"
+        href: "Rshiny/UserGuide/Rshiny.html"
+      - text: "ShinyApp"
+        href: "Rshiny/ShinyApp/shinyApp.html"
  
     right:
       - href: index.qmd
