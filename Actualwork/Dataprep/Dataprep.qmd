@@ -1,17 +1,21 @@
 ---
-title: "Data Prepration"
+title: "Data Preparation"
 execute:
   warning: false
 ---
+
 # 1.Install Package
+
 ```{r}
 pacman::p_load(sf, tmap, tidyverse, ggplot2, plotly, dplyr,readr, data.table)
 ```
 
-# 2.Data Prepration
-## 2.1 Data Prepration 
-  We aggregate monthly observations from 2013 to 2023, sourced from four distinct weather stations strategically located across Singapore's geographic regions. This process involves the meticulous integration of data sets to represent a comprehensive view of Singapore's climatic conditions over the specified period.
-  This consolidated data set serves as a foundation for futher climate analysis, trend identification, and regional weather comparisons within Singapore.
+# 2.Data Preparation
+
+## 2.1 Data Preparation
+
+We aggregate monthly observations from 2013 to 2023, sourced from four distinct weather stations strategically located across Singapore's geographic regions. This process involves the meticulous integration of data sets to represent a comprehensive view of Singapore's climatic conditions over the specified period. This consolidated data set serves as a foundation for futher climate analysis, trend identification, and regional weather comparisons within Singapore.
+
 ```{r}
 #| code-fold: true
 # We will import all the monthly data from 2013 to 2023 chosen from five different region.
@@ -36,15 +40,20 @@ weatherdata <- weatherdata %>%
   mutate(across(c(Year,Month,Day), as.character))
 
 ```
+
 ## 2.2 Saved Consolidated Data For Future Use
+
 In this phase, we create a rds format file to save our consolidated data set.
+
 ```{r}
 write_rds(weatherdata,
           "data/weatherdata.rds")
 ```
 
 ## 2.3 Read Output Data
-In this phase, we put our consolidated data set into the R programming environment, ensuring a seamless integration for comprehensive evaluation. 
+
+In this phase, we put our consolidated data set into the R programming environment, ensuring a seamless integration for comprehensive evaluation.
+
 ```{r}
 weatherdata <- read_rds("data/weatherdata.rds")
 summary(weatherdata)

@@ -191,7 +191,7 @@
   {
     "objectID": "Actualwork/Dataprep/Dataprep.html",
     "href": "Actualwork/Dataprep/Dataprep.html",
-    "title": "Data Prepration",
+    "title": "Data Preparation",
     "section": "",
     "text": "pacman::p_load(sf, tmap, tidyverse, ggplot2, plotly, dplyr,readr, data.table)"
   },
@@ -205,14 +205,14 @@
   {
     "objectID": "Actualwork/Dataprep/Dataprep.html#saved-consolidated-data-for-future-use",
     "href": "Actualwork/Dataprep/Dataprep.html#saved-consolidated-data-for-future-use",
-    "title": "Data Prepration",
+    "title": "Data Preparation",
     "section": "2.2 Saved Consolidated Data For Future Use",
     "text": "2.2 Saved Consolidated Data For Future Use\nIn this phase, we create a rds format file to save our consolidated data set.\n\nwrite_rds(weatherdata,\n          \"data/weatherdata.rds\")"
   },
   {
     "objectID": "Actualwork/Dataprep/Dataprep.html#read-output-data",
     "href": "Actualwork/Dataprep/Dataprep.html#read-output-data",
-    "title": "Data Prepration",
+    "title": "Data Preparation",
     "section": "2.3 Read Output Data",
     "text": "2.3 Read Output Data\nIn this phase, we put our consolidated data set into the R programming environment, ensuring a seamless integration for comprehensive evaluation.\n\nweatherdata &lt;- read_rds(\"data/weatherdata.rds\")\nsummary(weatherdata)\n\n   Station              Year              Month               Day           \n Length:19629       Length:19629       Length:19629       Length:19629      \n Class :character   Class :character   Class :character   Class :character  \n Mode  :character   Mode  :character   Mode  :character   Mode  :character  \n                                                                            \n                                                                            \n                                                                            \n                                                                            \n    Rainfall          MeanTemp        MaxTemp         MinTemp     \n Min.   :  0.000   Min.   :22.20   Min.   :22.80   Min.   :20.00  \n 1st Qu.:  0.000   1st Qu.:26.90   1st Qu.:30.90   1st Qu.:24.10  \n Median :  0.200   Median :27.70   Median :32.00   Median :25.00  \n Mean   :  6.327   Mean   :27.66   Mean   :31.75   Mean   :25.01  \n 3rd Qu.:  6.000   3rd Qu.:28.50   3rd Qu.:32.90   3rd Qu.:25.90  \n Max.   :210.600   Max.   :30.80   Max.   :36.80   Max.   :29.00  \n NA's   :460       NA's   :649     NA's   :587     NA's   :587    \n    MeanWind         MaxWind      \n Min.   : 0.400   Min.   :  8.30  \n 1st Qu.: 5.800   1st Qu.: 27.00  \n Median : 7.200   Median : 31.70  \n Mean   : 7.984   Mean   : 32.77  \n 3rd Qu.: 9.400   3rd Qu.: 37.40  \n Max.   :31.300   Max.   :105.50  \n NA's   :800      NA's   :796"
   },
@@ -264,5 +264,12 @@
     "title": "ISSS608-G1-Group10-Project",
     "section": "",
     "text": "What’s This Website For\nUsing the data collected by Meteorological Service Singapore, the website aims to provide information about the following: \n\nReveal patterns and anomalies with past weather data.\nIdentify correlations between different effects of climate change.\nVisualize the different effects of climate change to the different regions of Singapore. \nProvide suggestions to addressing the impact of climate change to Singapore."
+  },
+  {
+    "objectID": "Actualwork/Dataprep/Dataprep.html#data-preparation-1",
+    "href": "Actualwork/Dataprep/Dataprep.html#data-preparation-1",
+    "title": "Data Preparation",
+    "section": "2.1 Data Preparation",
+    "text": "2.1 Data Preparation\nWe aggregate monthly observations from 2013 to 2023, sourced from four distinct weather stations strategically located across Singapore’s geographic regions. This process involves the meticulous integration of data sets to represent a comprehensive view of Singapore’s climatic conditions over the specified period. This consolidated data set serves as a foundation for futher climate analysis, trend identification, and regional weather comparisons within Singapore.\n\n\nCode\n# We will import all the monthly data from 2013 to 2023 chosen from five different region.\nsetwd(\"D:/OtisChou/ISSS608-G1-Group10-Project/Actualwork/Dataprep/data\")\nfiles &lt;- list.files(pattern = \"*.csv\", full.names = TRUE)\nweatherdata &lt;- rbindlist(lapply(files, fread, encoding = \"UTF-8\"))\n\n# Delete Unwanted columns\nweatherdata &lt;- weatherdata %&gt;% select(-c(\"Highest 60 Min Rainfall (mm)\", \"Highest 30 Min Rainfall (mm)\",\"Highest 120 Min Rainfall (mm)\"))\n\n# Change the Name of the column\nnew_column_names &lt;- c(\"Station\", \"Year\", \"Month\",\"Day\",\"Rainfall\",\"MeanTemp\",\"MaxTemp\",\"MinTemp\",\"MeanWind\",\"MaxWind\")\nnames(weatherdata) &lt;- new_column_names\n\n#replace \\97x with NA\nweatherdata &lt;- weatherdata %&gt;%\n  mutate(across(where(is.character), ~na_if(., '\\x97')))\n\n#Convert data type\nweatherdata &lt;- weatherdata %&gt;%\n  mutate(across(c(Rainfall,MeanTemp,MaxTemp,MinTemp,MeanWind,MaxWind), as.numeric))%&gt;%\n  mutate(across(c(Year,Month,Day), as.character))"
   }
 ]

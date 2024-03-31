@@ -11,7 +11,7 @@ website:
     
     - text: "Analysis"
       menu:
-        - text: "DataPrepration"
+        - text: "DataPreparation"
           href: "Actualwork/Dataprep/Dataprep.html"
         - text: "Temperature Analysis"
           href: "Actualwork/Temperature/Temperature.html"

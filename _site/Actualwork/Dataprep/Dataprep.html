@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ISSS608-VAA - Data Prepration</title>
+<title>ISSS608-VAA - Data Preparation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -133,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-analysis">    
         <li>
     <a class="dropdown-item" href="../../Actualwork/Dataprep/Dataprep.html">
- <span class="dropdown-text">DataPrepration</span></a>
+ <span class="dropdown-text">DataPreparation</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../Actualwork/Temperature/Temperature.html">
@@ -191,9 +191,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#install-package" id="toc-install-package" class="nav-link active" data-scroll-target="#install-package">1.Install Package</a></li>
-  <li><a href="#data-prepration" id="toc-data-prepration" class="nav-link" data-scroll-target="#data-prepration">2.Data Prepration</a>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">2.Data Preparation</a>
   <ul class="collapse">
-  <li><a href="#data-prepration-1" id="toc-data-prepration-1" class="nav-link" data-scroll-target="#data-prepration-1">2.1 Data Prepration</a></li>
+  <li><a href="#data-preparation-1" id="toc-data-preparation-1" class="nav-link" data-scroll-target="#data-preparation-1">2.1 Data Preparation</a></li>
   <li><a href="#saved-consolidated-data-for-future-use" id="toc-saved-consolidated-data-for-future-use" class="nav-link" data-scroll-target="#saved-consolidated-data-for-future-use">2.2 Saved Consolidated Data For Future Use</a></li>
   <li><a href="#read-output-data" id="toc-read-output-data" class="nav-link" data-scroll-target="#read-output-data">2.3 Read Output Data</a></li>
   </ul></li>
@@ -205,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Prepration</h1>
+<h1 class="title">Data Preparation</h1>
 </div>
 
 
@@ -228,10 +228,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(sf, tmap, tidyverse, ggplot2, plotly, dplyr,readr, data.table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="data-prepration" class="level1">
-<h1>2.Data Prepration</h1>
-<section id="data-prepration-1" class="level2">
-<h2 class="anchored" data-anchor-id="data-prepration-1">2.1 Data Prepration</h2>
+<section id="data-preparation" class="level1">
+<h1>2.Data Preparation</h1>
+<section id="data-preparation-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation-1">2.1 Data Preparation</h2>
 <p>We aggregate monthly observations from 2013 to 2023, sourced from four distinct weather stations strategically located across Singapore’s geographic regions. This process involves the meticulous integration of data sets to represent a comprehensive view of Singapore’s climatic conditions over the specified period. This consolidated data set serves as a foundation for futher climate analysis, trend identification, and regional weather comparisons within Singapore.</p>
 <div class="cell">
 <details class="code-fold">
